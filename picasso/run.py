@@ -1,19 +1,41 @@
 import os
 
+# Modified by Anna
+import sys
+sys.path.append("C:/Users/ac2810/Desktop/Anna/super-res-001")
+# Modified by Anna
+
 import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
 import seaborn as sns
-from picasso.gaussmle import locs_from_fits
-from picasso.io import (TiffMap, load_locs, load_spots, load_tif,
+
+# Dezerae #
+#from picasso.gaussmle import locs_from_fits
+#from gaussmle import locs_from_fits
+#from picasso.io import (TiffMap, load_locs, load_spots, load_tif,
+#                            save_datasets, save_locs)
+#from picasso.localize import (fit, fit_async, get_spots,
+#                                  identifications_from_futures, identify,
+#                                  localize, locs_from_fits)
+#from picasso.postprocess import undrift
+#from picasso.render import render
+# Dezerae #
+
+# Anna # 
+from picasso.picasso.gaussmle import locs_from_fits
+from picasso.picasso.io import (TiffMap, load_locs, load_spots, load_tif,
                             save_datasets, save_locs)
-from picasso.localize import (fit, fit_async, get_spots,
+from picasso.picasso.localize import (fit, fit_async, get_spots,
                                   identifications_from_futures, identify,
                                   localize, locs_from_fits)
-from picasso.postprocess import undrift
-from picasso.render import render
+from picasso.picasso.postprocess import undrift
+from picasso.picasso.render import render
+# Anna # 
+
 import time
 from asyncio import wait
+
 # from skimage import io
 
 
@@ -120,7 +142,7 @@ if __name__ == "__main__":
     output_folder = 'results/picasso_script/'
 
     if not os.path.exists(output_folder):
-        os.makedirs(output_folder)()
+        os.makedirs(output_folder) #() Modified by Anna, no parenthesis
    
     # test fit using default parameters from picasso
     pylocalise(input_path, image_name, output_folder, drift_frames=drift_frames)

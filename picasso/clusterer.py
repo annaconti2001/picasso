@@ -401,9 +401,25 @@ def dbscan(locs, radius, min_density, pixelsize):
         X = _np.vstack((locs.x, locs.y, locs.z / pixelsize)).T
     else:
         X = _np.vstack((locs.x, locs.y)).T
-    labels = _dbscan(X, radius, min_density)
+
+    labels = _dbscan(X, radius, min_density) # extract all labels
     locs = extract_valid_labels(locs, labels)
-    return locs
+
+    # CHECK HERE IS IT EXTRACTING VALUD LABELS IN LABELS AND THAT THERE IS A GROUP COLUMN - ANNA
+    # eg of what could be done
+    clusters = locs['group'] # cluster ID for each group
+    clusters = clusters.rename(columns={'0': 'group'}) # rename as cluster ID column as 'group'
+    # CHECK
+ 
+    # Added by Anna
+    #labels = locs['group']  
+    #unique_clusters = _np.unique(labels)
+    #unique_clusters = unique_clusters[unique_clusters >= 0]     # remove anything below zero
+    
+    #clusters = [locs[labels == cid] for cid in unique_clusters] # group by cluster index
+    # Added by Anna
+
+    return clusters, locs   # Before it was only returning locs (not clusters)
 
 
 def _hdbscan(X, min_cluster_size, min_samples, cluster_eps=0):
