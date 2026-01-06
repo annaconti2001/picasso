@@ -419,7 +419,7 @@ def dbscan(locs, radius, min_density, pixelsize):
     #clusters = [locs[labels == cid] for cid in unique_clusters] # group by cluster index
     # Added by Anna
 
-    return clusters, locs   # Before it was only returning locs (not clusters)
+    return clusters, locs   # Anna - Before it was only returning locs (not clusters)
 
 
 def _hdbscan(X, min_cluster_size, min_samples, cluster_eps=0):
