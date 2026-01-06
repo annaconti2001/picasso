@@ -408,7 +408,7 @@ def dbscan(locs, radius, min_density, pixelsize):
     # CHECK HERE IS IT EXTRACTING VALUD LABELS IN LABELS AND THAT THERE IS A GROUP COLUMN - ANNA
     # eg of what could be done
     clusters = locs['group'] # cluster ID for each group
-    clusters = clusters.rename(columns={'0': 'group'}) # rename as cluster ID column as 'group'
+ #   clusters = clusters.rename(columns={'0': 'group'}) # rename as cluster ID column as 'group'
     # CHECK
  
     # Added by Anna
